@@ -58,7 +58,7 @@ df_nodup$`Full Text` <- sapply(df_nodup$`Full Text`, delete_emoji)
 #save sample file
 write.csv(df_nodup, file = "Reddit_clean.csv", row.names = FALSE)
 
-#deleted contraction using python
+#expanded contractions using python
 #ran in batches to find that line 115384 was causing error
 #combing batches ran
 # Read the first dataset
