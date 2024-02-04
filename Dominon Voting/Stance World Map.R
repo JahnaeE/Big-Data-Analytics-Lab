@@ -52,8 +52,8 @@ combined_GeoCodes_Adresses <- combined_GeoCodes %>%
 
 world_coordinates <- map_data("world")
 
-#map includeing stance
-#updated colors to represent the stance for that loaction
+#map including stance
+#updated colors to represent the stance for that location
 ggplot(data = combined_GeoCodes, aes(long, lat, fill = representing_stance)) +
   geom_map(data = world_coordinates, map = world_coordinates, 
            aes(long, lat, map_id = region), 
