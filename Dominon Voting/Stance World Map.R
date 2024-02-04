@@ -23,9 +23,9 @@ combined_location_names <- combined_location_names %>%
 colnames(combined_location_names) <- c("Date", "Location_Name", "Stance")
 
 #now including the top stance
-#the stance with the highest count represents that loactions overall stance
+#the stance with the highest count represents that locations overall stance
 locationCounts <- combined_location_names %>%
-  filter(Location_Name != "") %>%  # Exclude empty locations if needed
+  filter(Location_Name != "") %>% 
   group_by(Location_Name) %>%
   summarise(
     location_count = n(),
@@ -65,10 +65,8 @@ ggplot(data = combined_GeoCodes, aes(long, lat, fill = representing_stance)) +
 #interactive world map including stance
 world_coordinates <- map_data("world")
 
-# Create a basic geographic plot using plot_geo
 world_map <- plot_geo(combined_GeoCodes, locationmode = 'ISO-3') 
 
-# Add markers for the combined_GeoCodes dataset
 world_map <- world_map %>% add_markers(
   x = ~long, y = ~lat,
   text = ~paste(Location_Name, "<br />Count: ", location_count),
@@ -77,7 +75,6 @@ world_map <- world_map %>% add_markers(
   opacity = 0.7, symbol = I("circle")
 )
 
-# Set the layout of the plot, including the title and geographic configuration
 world_map <- world_map %>% layout(
   title = 'BrandWatch Location Data - World View',
   geo = list(
